@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5be92b82529c4683ab48cf11f8022b79" Name="Diagram1">
+        <EntityTypeShape EntityType="DataBaseModel.Accaunts" Width="1.5" PointX="1.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.Access" Width="1.5" PointX="1.5" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.Clients" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.Fittings" Width="1.5" PointX="3.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.materials" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.Order" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.Person" Width="1.5" PointX="5.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.Product_Fittings" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.Products" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.Products_Materials" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.Worker" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+        <AssociationConnector Association="DataBaseModel.FK_Accaunts_Access" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_Clients_Accaunts" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_Worker_Accaunts" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_Order_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_Product_Fittings_Fittings" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_Products_Materials_materials" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_Order_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_Order_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_Product_Fittings_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_Products_Materials_Products" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

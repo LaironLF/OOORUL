@@ -1,0 +1,19 @@
+﻿<Application x:Class="OOORUL.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:OOORUL"
+                          
+             xmlns:ViewPages="clr-namespace:OOORUL.Views.Pages"
+             xmlns:ViewModelPages="clr-namespace:OOORUL.ViewModels.VMPages"
+             
+             StartupUri="Views/Windows/MainWindow.xaml">
+    <Application.Resources>
+        <DataTemplate DataType="{x:Type ViewModelPages:ViewModelAuthorization}">
+            <ViewPages:PageAuthorization/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModelPages:ViewModelGuestAuthorization}">
+            <ViewPages:PageGuestAuthorization/>
+        </DataTemplate>
+         
+    </Application.Resources>
+</Application>
