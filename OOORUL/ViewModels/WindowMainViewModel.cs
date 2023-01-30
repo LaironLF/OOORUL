@@ -22,6 +22,9 @@ namespace OOORUL.ViewModels
             }
         }
 
+        // Лист для тех вбюмоделей, для которых нет смысла
+        // каждый раз объявлять новый экземпляр
+
         private List<ViewModelBase> _viewModels;
         public List<ViewModelBase> ViewModels
         {
@@ -37,8 +40,7 @@ namespace OOORUL.ViewModels
         // Определяем общую команду смены ВьюМодели
         // ****************************************
 
-        private void ChangeViewModel(ViewModelBase viewModel) =>
-            CurrentViewModel = viewModel;
+        private void ChangeViewModel(ViewModelBase viewModel) => CurrentViewModel = viewModel;
 
 
         public WindowMainViewModel()
@@ -47,9 +49,6 @@ namespace OOORUL.ViewModels
 
             PageChangeMediator.AddAction("TransitToAutho", x 
                 => ChangeViewModel(new ViewModelAuthorization()));
-
-            PageChangeMediator.AddAction("TransitToGuestAutho", x
-                => ChangeViewModel(new ViewModelGuestAuthorization()));
 
 
             // --- выставляем стартовый экран

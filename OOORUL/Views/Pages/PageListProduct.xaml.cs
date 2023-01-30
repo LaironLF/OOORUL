@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace OOORUL.Views.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для PageGuestAuthorization.xaml
+    /// Логика взаимодействия для PageListProduct.xaml
     /// </summary>
-    public partial class PageGuestAuthorization : Page
+    public partial class PageListProduct : Page
     {
-        public PageGuestAuthorization()
+        public PageListProduct()
         {
             InitializeComponent();
         }

@@ -87,7 +87,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pages\PageGuestAuthorization.xaml">
+    <Page Include="Views\Pages\PageListProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,17 +154,18 @@
     <Compile Include="Model\DataBase\Worker.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Helpers\DataBaseHelper.cs" />
     <Compile Include="Model\PageChangeMediator.cs" />
     <Compile Include="Model\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\VMPages\ViewModelAuthorization.cs" />
-    <Compile Include="ViewModels\VMPages\ViewModelGuestAuthorization.cs" />
+    <Compile Include="ViewModels\VMPages\ViewModelListProduct.cs" />
     <Compile Include="ViewModels\WindowMainViewModel.cs" />
     <Compile Include="Views\Pages\PageAuthorization.xaml.cs">
       <DependentUpon>PageAuthorization.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\PageGuestAuthorization.xaml.cs">
-      <DependentUpon>PageGuestAuthorization.xaml</DependentUpon>
+    <Compile Include="Views\Pages\PageListProduct.xaml.cs">
+      <DependentUpon>PageListProduct.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\PageMain.xaml.cs">
       <DependentUpon>PageMain.xaml</DependentUpon>

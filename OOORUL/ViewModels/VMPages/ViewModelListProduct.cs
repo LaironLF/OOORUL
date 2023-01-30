@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOORUL.ViewModels.VMPages
 {
-    internal class ViewModelGuestAuthorization : ViewModelBase
+    internal class ViewModelListProduct : ViewModelBase
     {
     }
 }

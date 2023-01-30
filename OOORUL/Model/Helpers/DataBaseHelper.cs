@@ -8,5 +8,6 @@ namespace OOORUL.Model.Helpers
 {
     internal class DataBaseHelper
     {
+
     }
 }

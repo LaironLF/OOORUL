@@ -58,7 +58,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Button
-                        Command="{Binding TransitToPageGuestAthorization, UpdateSourceTrigger=PropertyChanged}"
+                        Command="{Binding}"
                         Grid.Column="0"
                         Margin="0, 5, 5, 0"
                         Background="Green"
