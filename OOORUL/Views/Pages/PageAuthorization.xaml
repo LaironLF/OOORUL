@@ -3,10 +3,17 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:OOORUL.Views.Pages"
+      xmlns:local="clr-namespace:OOORUL.Views.Pages" xmlns:vmpages="clr-namespace:OOORUL.ViewModels.VMPages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageAuthorization">
+    <Page.DataContext>
+        <vmpages:ViewModelAuthorization/>
+    </Page.DataContext>
+    
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibleConverter"/>
+    </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -29,7 +36,8 @@
                 </TextBlock>
                 <TextBox
                     FontSize="20"
-                    Margin="0,5"/>
+                    Margin="0,5"
+                    Text="{Binding TbLogin, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <!-- пароль -->
                 <TextBlock
@@ -39,17 +47,21 @@
                 </TextBlock>
                 <TextBox
                     FontSize="20"
-                    Margin="0, 5"/>
+                    Margin="0, 5"
+                    Text="{Binding TbPassword, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <!-- Captcha -->
                 <TextBlock
+                    Visibility="{Binding Path=TbCaptchaVisible, Converter={StaticResource BoolToVisibleConverter}}"
                     Margin="0,5"
                     FontSize="20">
                     Captcha:
                 </TextBlock>
                 <TextBox
+                    Visibility="{Binding Path=TbCaptchaVisible, Converter={StaticResource BoolToVisibleConverter}}"
                     FontSize="20"
-                    Margin="0, 5"/>
+                    Margin="0, 5"
+                    Text="{Binding TbCaptchaValue, UpdateSourceTrigger=PropertyChanged}"/>
                 
                 <!-- Кнопочки -->
                 <Grid>
@@ -68,6 +80,7 @@
                         Content="Войти как гость"/>
 
                     <Button
+                        Command="{Binding BtnAuthorizate}"
                         Grid.Column="1"
                         Margin="5, 5, 0, 0"
                         Background="Green"

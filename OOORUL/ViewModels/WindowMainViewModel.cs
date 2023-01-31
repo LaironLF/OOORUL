@@ -43,6 +43,7 @@ namespace OOORUL.ViewModels
         private void ChangeViewModel(ViewModelBase viewModel) => CurrentViewModel = viewModel;
 
 
+
         public WindowMainViewModel()
         {
             // --- Добавляем действия перехода между экранами ---

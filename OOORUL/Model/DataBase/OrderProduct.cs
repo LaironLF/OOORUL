@@ -12,19 +12,13 @@ namespace OOORUL.Model.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Fittings
+    public partial class OrderProduct
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Fittings()
-        {
-            this.Product_Fittings = new HashSet<Product_Fittings>();
-        }
+        public int OrderID { get; set; }
+        public string ProductArticleNumber { get; set; }
+        public int CountProduct { get; set; }
     
-        public int id_fittings { get; set; }
-        public string Title { get; set; }
-        public Nullable<int> countFact { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product_Fittings> Product_Fittings { get; set; }
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

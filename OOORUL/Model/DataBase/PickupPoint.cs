@@ -12,19 +12,17 @@ namespace OOORUL.Model.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Worker
+    public partial class PickupPoint
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Worker()
+        public PickupPoint()
         {
             this.Order = new HashSet<Order>();
         }
     
-        public int id_Worker { get; set; }
-        public int id_Acc { get; set; }
-        public string Passport { get; set; }
+        public int ID { get; set; }
+        public string Address { get; set; }
     
-        public virtual Accaunts Accaunts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
     }

@@ -16,6 +16,7 @@ namespace OOORUL.Model.DataBase
     public partial class DataBaseEntities : DbContext
     {
         private static DataBaseEntities context;
+
         public DataBaseEntities()
             : base("name=DataBaseEntities")
         {
@@ -33,17 +34,15 @@ namespace OOORUL.Model.DataBase
             return context;
         }
     
-        public virtual DbSet<Accaunts> Accaunts { get; set; }
-        public virtual DbSet<Access> Access { get; set; }
-        public virtual DbSet<Clients> Clients { get; set; }
-        public virtual DbSet<Fittings> Fittings { get; set; }
-        public virtual DbSet<materials> materials { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Maker> Maker { get; set; }
         public virtual DbSet<Order> Order { get; set; }
-        public virtual DbSet<Person> Person { get; set; }
-        public virtual DbSet<Product_Fittings> Product_Fittings { get; set; }
-        public virtual DbSet<Products> Products { get; set; }
-        public virtual DbSet<Products_Materials> Products_Materials { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Worker> Worker { get; set; }
+        public virtual DbSet<OrderProduct> OrderProduct { get; set; }
+        public virtual DbSet<PickupPoint> PickupPoint { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Provider> Provider { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

@@ -12,19 +12,16 @@ namespace OOORUL.Model.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class materials
+    public partial class User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public materials()
-        {
-            this.Products_Materials = new HashSet<Products_Materials>();
-        }
+        public int UserID { get; set; }
+        public string UserSurname { get; set; }
+        public string UserName { get; set; }
+        public string UserPatronymic { get; set; }
+        public string UserLogin { get; set; }
+        public string UserPassword { get; set; }
+        public int UserRole { get; set; }
     
-        public int id_materials { get; set; }
-        public string title { get; set; }
-        public int countFact { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Products_Materials> Products_Materials { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

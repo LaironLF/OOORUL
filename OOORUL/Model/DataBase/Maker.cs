@@ -12,25 +12,18 @@ namespace OOORUL.Model.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Products
+    public partial class Maker
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Products()
+        public Maker()
         {
-            this.Order = new HashSet<Order>();
-            this.Product_Fittings = new HashSet<Product_Fittings>();
-            this.Products_Materials = new HashSet<Products_Materials>();
+            this.Product = new HashSet<Product>();
         }
     
-        public int id_product { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
+        public int ID { get; set; }
+        public string NameMaker { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product_Fittings> Product_Fittings { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Products_Materials> Products_Materials { get; set; }
+        public virtual ICollection<Product> Product { get; set; }
     }
 }

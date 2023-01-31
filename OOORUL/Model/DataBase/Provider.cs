@@ -12,29 +12,18 @@ namespace OOORUL.Model.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Accaunts
+    public partial class Provider
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Accaunts()
+        public Provider()
         {
-            this.Clients = new HashSet<Clients>();
-            this.Worker = new HashSet<Worker>();
+            this.Product = new HashSet<Product>();
         }
     
-        public int id_acc { get; set; }
-        public string login { get; set; }
-        public string password { get; set; }
-        public byte id_access { get; set; }
-        public string Surname { get; set; }
-        public string Firstname { get; set; }
-        public string SecondName { get; set; }
-        public string phoneNumber { get; set; }
-        public string Email { get; set; }
+        public int ID { get; set; }
+        public string NameProvider { get; set; }
     
-        public virtual Access Access { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Clients> Clients { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Worker> Worker { get; set; }
+        public virtual ICollection<Product> Product { get; set; }
     }
 }

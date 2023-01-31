@@ -103,56 +103,50 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\DataBase\Accaunts.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Model\DataBase\Category.cs">
+      <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DataBase\Access.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBase\Clients.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBase\Fittings.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBase\materials.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBase\Model1.Context.cs">
+    <Compile Include="Model\DataBase\DataBaseRulModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>DataBaseRulModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DataBase\Model1.cs">
+    <Compile Include="Model\DataBase\DataBaseRulModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DataBase\Model1.Designer.cs">
+    <Compile Include="Model\DataBase\DataBaseRulModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>DataBaseRulModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataBase\Maker.cs">
+      <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataBase\Order.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DataBase\Person.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Model\DataBase\OrderProduct.cs">
+      <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DataBase\Products.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Model\DataBase\PickupPoint.cs">
+      <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DataBase\Products_Materials.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Model\DataBase\Product.cs">
+      <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DataBase\Product_Fittings.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Model\DataBase\Provider.cs">
+      <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DataBase\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Model\DataBase\Role.cs">
+      <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DataBase\Worker.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Model\DataBase\Status.cs">
+      <DependentUpon>DataBaseRulModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataBase\User.cs">
+      <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Helpers\DataBaseHelper.cs" />
     <Compile Include="Model\PageChangeMediator.cs" />
@@ -194,12 +188,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\DataBase\Model1.edmx">
+    <EntityDeploy Include="Model\DataBase\DataBaseRulModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataBaseRulModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\DataBase\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="Model\DataBase\DataBaseRulModel.edmx.diagram">
+      <DependentUpon>DataBaseRulModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -227,20 +221,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\DataBase\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\DataBase\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
     <Resource Include="Resources\icon.ico" />
     <Resource Include="Resources\logo.png" />
     <Resource Include="Views\Windows\logo.png" />
     <Resource Include="Views\Windows\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\DataBase\DataBaseRulModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataBaseRulModel.Context.cs</LastGenOutput>
+      <DependentUpon>DataBaseRulModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\DataBase\DataBaseRulModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataBaseRulModel.edmx</DependentUpon>
+      <LastGenOutput>DataBaseRulModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

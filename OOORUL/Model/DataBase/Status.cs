@@ -12,18 +12,18 @@ namespace OOORUL.Model.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Access
+    public partial class Status
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Access()
+        public Status()
         {
-            this.Accaunts = new HashSet<Accaunts>();
+            this.Order = new HashSet<Order>();
         }
     
-        public byte id_Access { get; set; }
-        public string Title { get; set; }
+        public int StatusID { get; set; }
+        public string StatusName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Accaunts> Accaunts { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }
