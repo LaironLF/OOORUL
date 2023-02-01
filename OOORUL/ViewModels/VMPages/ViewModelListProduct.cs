@@ -13,7 +13,6 @@ namespace OOORUL.ViewModels.VMPages
         // | База данных, ага
         DataBaseHelper dataBaseHelper = new DataBaseHelper();
 
-        private List<Product> _productList;
         public List<Product> ProductList
         {
             get { return dataBaseHelper.GetProductList(); }

@@ -46,7 +46,7 @@ namespace OOORUL.Model.DataBase
         {
             get
             {
-                if (this.MaxDiscountAmount > 15)
+                if (this.ProductDiscountAmount > 15)
                     return "#7fff00";
                 return "#fff";
             }
