@@ -35,26 +35,27 @@ namespace OOORUL.Model
             // | Создаём битмап
             captchaImage = new Bitmap(Width, Height);
 
-            // | Генерируем ужаснейшие координаты текста
-            int Xpos = random.Next(0, Width - Width * 3/4);
-            int Ypos = random.Next(0, Height - Height*3/4);
-            var captchaCords = new PointF(Xpos, Ypos);
-
             // | Подготовим ужаснейшие параметры текста
             var CaptchaFont = new Font("Times New Roman", 20, FontStyle.Italic);
             var CaptchaColor = colors[random.Next(colors.Length)];
-            
 
-            // | НАЧИНАЕМ РИСОВАТЬ УЖАСНЕЙШУЮ КАПТЧУ УХАХАХАХАХ
+            // | Начинаем рисовать каптчу
+            Graphics g = Graphics.FromImage((Image)captchaImage);
+            g.Clear(Color.DarkGray);
 
-            Graphics g = Graphics.FromImage((Image)captchaImage);   // | Создаём перо - инструмент с которого начинаются страдания людей
-            g.Clear(Color.DarkGray);                                // | Закрашиваем фон, чтобы людям жизнь мёдом не казалась
-            g.DrawString(                                           // | Начинаем рисовать каптчу, с которой начнутся страдания людей
-                captchaText,                                        
-                CaptchaFont,
-                CaptchaColor,
-                captchaCords);
-            g.DrawLine(Pens.Black, new Point(0, Height/2), new Point(Width-1, Height/2-1)); // | добавим линию, а то чёт ещё слишком просто
+
+            // | Рисуем каждый символ отдельно
+            for(int i = 0; i < captchaText.Length; i++)
+            {
+                int Xpos = i * (Width / captchaText.Length);
+                int Ypos = random.Next(0, Height - Height * 3 / 4);
+                var captchaCords = new Point(Xpos, Ypos);
+                g.DrawString(
+                    Convert.ToString(captchaText[i]),
+                    CaptchaFont,
+                    CaptchaColor,
+                    captchaCords);
+            }
 
             // | О, и не забудем ещё навалить белых точек, аля шумы,
             // | тогда вообще все офигеют от жизни
