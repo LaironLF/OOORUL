@@ -103,6 +103,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\CaptchaGenerator.cs" />
     <Compile Include="Model\DataBase\Category.cs">
       <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
@@ -149,6 +150,7 @@
       <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Helpers\DataBaseHelper.cs" />
+    <Compile Include="Model\imageConverter.cs" />
     <Compile Include="Model\PageChangeMediator.cs" />
     <Compile Include="Model\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

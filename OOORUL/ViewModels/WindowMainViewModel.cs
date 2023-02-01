@@ -48,8 +48,7 @@ namespace OOORUL.ViewModels
         {
             // --- Добавляем действия перехода между экранами ---
 
-            PageChangeMediator.AddAction("TransitToAutho", x 
-                => ChangeViewModel(new ViewModelAuthorization()));
+            PageChangeMediator.AddAction("TransitToAutho", x => ChangeViewModel(new ViewModelAuthorization()));
 
 
             // --- выставляем стартовый экран

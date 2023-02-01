@@ -57,6 +57,11 @@
                     FontSize="20">
                     Captcha:
                 </TextBlock>
+                <Image
+                    Width="200"
+                    Height="50"
+                    Visibility="{Binding Path=TbCaptchaVisible, Converter={StaticResource BoolToVisibleConverter}}"
+                    Source="{Binding CaptchaImage, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox
                     Visibility="{Binding Path=TbCaptchaVisible, Converter={StaticResource BoolToVisibleConverter}}"
                     FontSize="20"
