@@ -13,5 +13,7 @@ namespace OOORUL.Model.Helpers
         public DataBaseHelper() => _dataBaseEntities = DataBaseEntities.GetContext();
 
         public User SearchAccount(string login, string password) => _dataBaseEntities.User.Where(x => x.UserLogin == login && x.UserPassword == password).FirstOrDefault();
+        public List<Product> GetProductList() => _dataBaseEntities.Product.ToList();
     }
+
 }

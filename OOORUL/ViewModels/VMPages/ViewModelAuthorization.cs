@@ -104,7 +104,7 @@ namespace OOORUL.ViewModels.VMPages
                     throw new Exception("Неверный логин или пароль");
                 }
 
-                MessageBox.Show(user.UserPatronymic, user.UserName);
+                PageChangeMediator.Transit("TransitToListProduct");
             }
             catch(Exception e) 
             { 
