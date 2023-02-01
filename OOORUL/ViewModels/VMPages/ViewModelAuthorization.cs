@@ -73,6 +73,18 @@ namespace OOORUL.ViewModels.VMPages
             }
         }
 
+        private RelayCommand _btnRegenerateCaptcha;
+        public RelayCommand BtnRegenerateCaptcha
+        {
+            get
+            {
+                return _btnRegenerateCaptcha ?? (_btnRegenerateCaptcha = new RelayCommand(x => 
+                {
+                    CaptchaGenerate();
+                }));
+            }
+        }
+
         // | Функции
         // --------------------------------------------
 

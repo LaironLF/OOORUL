@@ -12,6 +12,7 @@
     </Page.DataContext>
     
     <Page.Resources>
+        <Image x:Key="resetImage" Source="/Resources/reset.png"/>
         <BooleanToVisibilityConverter x:Key="BoolToVisibleConverter"/>
     </Page.Resources>
 
@@ -57,11 +58,24 @@
                     FontSize="20">
                     Captcha:
                 </TextBlock>
-                <Image
-                    Width="200"
-                    Height="50"
-                    Visibility="{Binding Path=TbCaptchaVisible, Converter={StaticResource BoolToVisibleConverter}}"
-                    Source="{Binding CaptchaImage, UpdateSourceTrigger=PropertyChanged}"/>
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Image
+                        Width="200"
+                        Height="50"
+                        Visibility="{Binding Path=TbCaptchaVisible, Converter={StaticResource BoolToVisibleConverter}}"
+                        Source="{Binding CaptchaImage, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button
+                        Margin="5, 0"
+                        Width="32"
+                        Height="32"
+                        Visibility="{Binding Path=TbCaptchaVisible, Converter={StaticResource BoolToVisibleConverter}}"
+                        Command="{Binding BtnRegenerateCaptcha}"
+                        Background="{x:Null}" BorderBrush="{x:Null}">
+                        <Image Source="/Views/Pages/reset.png"/>
+                    </Button>
+                </StackPanel>
                 <TextBox
                     Visibility="{Binding Path=TbCaptchaVisible, Converter={StaticResource BoolToVisibleConverter}}"
                     FontSize="20"

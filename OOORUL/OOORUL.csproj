@@ -239,6 +239,8 @@
       <DependentUpon>DataBaseRulModel.edmx</DependentUpon>
       <LastGenOutput>DataBaseRulModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Views\Pages\reset.png" />
+    <None Include="Resources\reset.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
