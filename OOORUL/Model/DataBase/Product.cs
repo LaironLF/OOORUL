@@ -52,16 +52,16 @@ namespace OOORUL.Model.DataBase
             }
         }
 
-        public string CostWithDiscount
+        public double CostWithDiscount
         {
             get
             {
                 if(this.MaxDiscountAmount > 0)
                 {
                     var CostWithDiscount = Convert.ToDouble(this.ProductCost) - Convert.ToDouble(this.ProductCost) * Convert.ToDouble(this.ProductDiscountAmount / 100.00);
-                    return CostWithDiscount.ToString();
+                    return CostWithDiscount;
                 }
-                return this.ProductCost.ToString();
+                return CostWithDiscount;
             }
         }
 

@@ -45,14 +45,18 @@
                 Margin="5, 0"/>
 
             <ComboBox
-                SelectedIndex="0"
+                SelectedIndex="{Binding SelectedIndexSortingList}"
                 Grid.Column="1"
-                Margin="5, 5"/>
+                Margin="5, 10"
+                FontSize="18"
+                ItemsSource="{Binding SortingList}"/>
 
             <ComboBox
-                SelectedIndex="0"
+                SelectedIndex="{Binding SelectedIndexFilterList}"
                 Grid.Column="2"
-                Margin="5, 5"/>
+                Margin="5, 10"
+                FontSize="18"
+                ItemsSource="{Binding FilterList}"/>
 
         </Grid>
 
