@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace OOORUL.ViewModels.VMPages
 {
@@ -38,6 +39,27 @@ namespace OOORUL.ViewModels.VMPages
             set { _tbCaptchaValue = value; onPropertyChanged(nameof(TbCaptchaValue)); }
         }
 
+        private string _tbTimerBlock;
+        public string TbTimerBlock
+        {
+            get { return _tbTimerBlock; }
+            set { _tbTimerBlock = value; onPropertyChanged(nameof(TbTimerBlock)); }
+        }
+
+        private bool _tbTimerVisible = false;
+        public bool TbTimerVisible
+        {
+            get { return _tbTimerVisible; }
+            set { _tbTimerVisible = value; onPropertyChanged(nameof(TbTimerVisible)); }
+        }
+
+        private bool _objectsInteracteble = true;
+        public bool ObjectsInteracteble
+        {
+            get { return _objectsInteracteble; }
+            set { _objectsInteracteble = value; onPropertyChanged(nameof(ObjectsInteracteble)); }
+        }
+
         private ImageSource _captchaImage;
         public ImageSource CaptchaImage
         {
@@ -47,6 +69,10 @@ namespace OOORUL.ViewModels.VMPages
 
         private CaptchaGenerator captchaGenerator = new CaptchaGenerator();
         private int UnsuccefullAuthorizationCount = 0;
+
+        private DispatcherTimer _timer;
+        private TimeSpan _time;
+
 
         // | Тут будет каптча, будем менять её видимость
         // -------------------------------------------
@@ -109,7 +135,7 @@ namespace OOORUL.ViewModels.VMPages
             catch(Exception e) 
             { 
                 MessageBox.Show(e.Message, "Ошибка");
-                if (UnsuccefullAuthorizationCount > 3) BlockPageProcess();
+                if (UnsuccefullAuthorizationCount >= 2) BlockPageProcess();
                 UnsuccefullAuthorizationCount++;
             }
             finally
@@ -120,7 +146,30 @@ namespace OOORUL.ViewModels.VMPages
 
         private void BlockPageProcess()
         {
-            throw new NotImplementedException();
+            UnsuccefullAuthorizationCount = 0;
+            TbTimerVisible = true;
+            ObjectsInteracteble = false;
+
+            _time = TimeSpan.FromSeconds(10);
+            _timer = new DispatcherTimer(
+                new TimeSpan(0, 0, 1), 
+                DispatcherPriority.Normal, 
+                delegate { timeExpression(); }, 
+                Application.Current.Dispatcher);
+
+            _timer.Start();
+        }
+
+        private void timeExpression()
+        {
+            TbTimerBlock = _time.ToString("ss");
+            if (_time == TimeSpan.Zero)
+            {
+                _timer.Stop();
+                TbTimerVisible=false;
+                ObjectsInteracteble = true;
+            }
+            _time = _time.Add(TimeSpan.FromSeconds(-1));
         }
 
         private void CaptchaGenerate()

@@ -25,6 +25,15 @@
         
         <!-- Autorizathion grid-->
         <Grid Grid.Column="1">
+            <TextBlock
+                VerticalAlignment="Center"
+                FontSize="26"
+                Margin="0, 10"
+                Foreground="Red"
+                FontWeight="Bold"
+                HorizontalAlignment="Center"
+                Visibility="{Binding TbTimerVisible, Converter={StaticResource BoolToVisibleConverter}}"
+                Text="{Binding TbTimerBlock, StringFormat='\{0} сек'}"/>
             <StackPanel
                 VerticalAlignment="Center"
                 Orientation="Vertical">
@@ -36,6 +45,7 @@
                     Логин:
                 </TextBlock>
                 <TextBox
+                    IsHitTestVisible="{Binding ObjectsInteracteble}"
                     FontSize="20"
                     Margin="0,5"
                     Text="{Binding TbLogin, UpdateSourceTrigger=PropertyChanged}"/>
@@ -47,6 +57,7 @@
                     Пароль:
                 </TextBlock>
                 <TextBox
+                    IsHitTestVisible="{Binding ObjectsInteracteble}"
                     FontSize="20"
                     Margin="0, 5"
                     Text="{Binding TbPassword, UpdateSourceTrigger=PropertyChanged}"/>
@@ -67,6 +78,7 @@
                         Visibility="{Binding Path=TbCaptchaVisible, Converter={StaticResource BoolToVisibleConverter}}"
                         Source="{Binding CaptchaImage, UpdateSourceTrigger=PropertyChanged}"/>
                     <Button
+                        IsHitTestVisible="{Binding ObjectsInteracteble}"
                         Margin="5, 0"
                         Width="32"
                         Height="32"
@@ -77,6 +89,7 @@
                     </Button>
                 </StackPanel>
                 <TextBox
+                    IsHitTestVisible="{Binding ObjectsInteracteble}"
                     Visibility="{Binding Path=TbCaptchaVisible, Converter={StaticResource BoolToVisibleConverter}}"
                     FontSize="20"
                     Margin="0, 5"
@@ -99,6 +112,7 @@
                         Content="Войти как гость"/>
 
                     <Button
+                        IsHitTestVisible="{Binding ObjectsInteracteble}"
                         Command="{Binding BtnAuthorizate}"
                         Grid.Column="1"
                         Margin="5, 5, 0, 0"
