@@ -5,12 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OOORUL.Views.Pages"
       xmlns:vmpages="clr-namespace:OOORUL.ViewModels.VMPages"
+      xmlns:system="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageListProduct">
     <Page.DataContext>
         <vmpages:ViewModelListProduct/>
     </Page.DataContext>
+
+    <Page.Resources>
+        <system:String x:Key="defaultImage">
+            pack://application:,,,/Resources/picture.png
+        </system:String>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -73,6 +80,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Image
+                                Source="{Binding ImgPath, FallbackValue={StaticResource defaultImage}}"
                                 Width="100"
                                 Height="100"
                                 Margin="5"/>
@@ -94,6 +102,7 @@
 
                             <TextBlock
                                 Grid.Column="2"
+                                FontSize="20"
                                 Text="{Binding ProductDiscountAmount, StringFormat='\{0} %'}"
                                 VerticalAlignment="Center"/>
 

@@ -64,5 +64,10 @@ namespace OOORUL.Model.DataBase
                 return this.ProductCost.ToString();
             }
         }
+
+        public string ImgPath
+        {
+            get { return "pack://application:,,,/Resources/" + this.ProductImage; }
+        }
     }
 }

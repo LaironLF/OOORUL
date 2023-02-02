@@ -103,7 +103,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\CaptchaGenerator.cs" />
+    <Compile Include="Model\Core\CaptchaGenerator.cs" />
     <Compile Include="Model\DataBase\Category.cs">
       <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
@@ -150,9 +150,9 @@
       <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Helpers\DataBaseHelper.cs" />
-    <Compile Include="Model\imageConverter.cs" />
-    <Compile Include="Model\PageChangeMediator.cs" />
-    <Compile Include="Model\RelayCommand.cs" />
+    <Compile Include="Model\Core\imageConverter.cs" />
+    <Compile Include="Model\Core\PageChangeMediator.cs" />
+    <Compile Include="Model\Core\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\VMPages\ViewModelAuthorization.cs" />
     <Compile Include="ViewModels\VMPages\ViewModelListProduct.cs" />
@@ -239,6 +239,15 @@
       <DependentUpon>DataBaseRulModel.edmx</DependentUpon>
       <LastGenOutput>DataBaseRulModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\picture.png" />
+    <Resource Include="Resources\Z472R4.jpeg" />
+    <Resource Include="Resources\Z469T7.jpg" />
+    <Resource Include="Resources\S037R9.jpeg" />
+    <Resource Include="Resources\O393R4.jpeg" />
+    <Resource Include="Resources\K849L6.jpeg" />
+    <Resource Include="Resources\K830R4.jpg" />
+    <Resource Include="Resources\D374E4.jpeg" />
+    <Resource Include="Resources\A782R4.jpg" />
     <Resource Include="Views\Pages\reset.png" />
     <None Include="Resources\reset.png" />
   </ItemGroup>
