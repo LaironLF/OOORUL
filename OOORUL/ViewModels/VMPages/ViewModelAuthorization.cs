@@ -111,6 +111,18 @@ namespace OOORUL.ViewModels.VMPages
             }
         }
 
+        private RelayCommand _btnAuthorizateAsGuest;
+        public RelayCommand BtnAuthorizateAsGuest
+        {
+            get
+            {
+                return _btnAuthorizate ?? (_btnAuthorizateAsGuest = new RelayCommand(x =>
+                {
+                    PageChangeMediator.Transit("TransitToListProduct");
+                }));
+            }
+        }
+
         // | Функции
         // --------------------------------------------
 

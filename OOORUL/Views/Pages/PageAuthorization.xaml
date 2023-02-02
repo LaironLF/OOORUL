@@ -102,7 +102,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Button
-                        Command="{Binding}"
+                        Command="{Binding BtnAuthorizateAsGuest}"
                         Grid.Column="0"
                         Margin="0, 5, 5, 0"
                         Background="Green"
