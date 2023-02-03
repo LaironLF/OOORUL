@@ -5,18 +5,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OOORUL.Model.Core;
 
 namespace OOORUL.ViewModels.VMPages
 {
     internal class ViewModelListProduct : ViewModelBase
     {
+        // | Конструкторы
+        // --------------------------------------------------
+
         internal ViewModelListProduct()
         {
-            ProductList = dataBaseHelper.GetProductList();
+            if (DataMediator.user == null) 
+                UserFullname = "Гость";
+            else 
+                UserFullname = $"{DataMediator.user.UserSurname} {DataMediator.user.UserName} {DataMediator.user.UserPatronymic}";
+
+            UpdateSortList();
         }
 
-
         // | База данных, ага
+        // ---------------------------------------------------
         DataBaseHelper dataBaseHelper = new DataBaseHelper();
 
         private List<Product> _productList;
@@ -27,6 +36,23 @@ namespace OOORUL.ViewModels.VMPages
         }
 
         // | Поля для объектов формы
+        // -----------------------------------------------------
+
+        public string UserFullname { get; set; }
+
+        private int _productCount = 0;
+        public int ProductCount
+        {
+            get { return _productCount; }
+            set { _productCount = value; onPropertyChanged(nameof(ProductCount)); }
+        }
+
+        private int _productSubstractedCount = 0;
+        public int ProductSubstractedCount
+        {
+            get { return _productSubstractedCount; }
+            set { _productSubstractedCount = value; onPropertyChanged(nameof(ProductSubstractedCount)); }
+        }
 
         private int _selectedIndexSortingList = 0;
         public int SelectedIndexSortingList
@@ -67,6 +93,9 @@ namespace OOORUL.ViewModels.VMPages
             "15% и более"
         };
 
+        // | Функции
+        // ----------------------------------------------------
+
         private void UpdateSortList()
         {
             switch (SelectedIndexSortingList)
@@ -81,6 +110,7 @@ namespace OOORUL.ViewModels.VMPages
                     ProductList = dataBaseHelper.GetOrderedByDescendingList();
                     break;
             }
+            ProductCount = ProductList.Count();
             switch (SelectedIndexFilterList)
             {
                 case 1:
@@ -92,8 +122,8 @@ namespace OOORUL.ViewModels.VMPages
                 case 3:
                     ProductList = GetFilteredListByDiscount(ProductList, 15, 101);
                     break;
-
             }
+            ProductSubstractedCount = ProductList.Count();
         }
 
         public List<Product> GetFilteredListByDiscount(List<Product> products, int min, int max) => products.Where(x => x.ProductDiscountAmount >= min && x.ProductDiscountAmount < max).ToList();

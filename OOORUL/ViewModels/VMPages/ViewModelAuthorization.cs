@@ -1,4 +1,5 @@
 ﻿using OOORUL.Model;
+using OOORUL.Model.Core;
 using OOORUL.Model.Helpers;
 using System;
 using System.Collections.Generic;
@@ -116,7 +117,7 @@ namespace OOORUL.ViewModels.VMPages
         {
             get
             {
-                return _btnAuthorizate ?? (_btnAuthorizateAsGuest = new RelayCommand(x =>
+                return _btnAuthorizateAsGuest ?? (_btnAuthorizateAsGuest = new RelayCommand(x =>
                 {
                     PageChangeMediator.Transit("TransitToListProduct");
                 }));
@@ -142,6 +143,7 @@ namespace OOORUL.ViewModels.VMPages
                     throw new Exception("Неверный логин или пароль");
                 }
 
+                DataMediator.user = user;
                 PageChangeMediator.Transit("TransitToListProduct");
             }
             catch(Exception e) 

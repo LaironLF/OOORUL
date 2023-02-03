@@ -104,6 +104,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\Core\CaptchaGenerator.cs" />
+    <Compile Include="Model\Core\DataMediator.cs" />
     <Compile Include="Model\DataBase\Category.cs">
       <DependentUpon>DataBaseRulModel.tt</DependentUpon>
     </Compile>
