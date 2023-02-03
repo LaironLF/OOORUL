@@ -93,9 +93,10 @@
 
         <!-- ListView-->
         <ListView
+            x:Name="lv_products"
             Grid.Row="2"
             Margin="5"
-            ItemsSource="{Binding ProductList}">
+            ItemsSource="{Binding ProductList}" SelectionChanged="sele">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -145,7 +146,29 @@
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem
+                        x:Name="btnAddToBucket"
+                        Header="Добавить к заказу"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
         </ListView>
         
+        <!-- Кнопочки действия -->
+        <Grid
+            Grid.Row="3">
+            <Button
+                HorizontalAlignment="Left"
+                Width="200"
+                Height="48"
+                Margin="20, 0"
+                Background="#FF00C500"
+                Foreground="White"
+                Content="Заказ"
+                FontSize="20"/>
+
+        </Grid>
+
     </Grid>
 </Page>

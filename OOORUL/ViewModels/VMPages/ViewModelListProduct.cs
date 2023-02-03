@@ -40,6 +40,8 @@ namespace OOORUL.ViewModels.VMPages
 
         public string UserFullname { get; set; }
 
+        public List<Product> SelectedProducts { get; set; }
+
         private int _productCount = 0;
         public int ProductCount
         {

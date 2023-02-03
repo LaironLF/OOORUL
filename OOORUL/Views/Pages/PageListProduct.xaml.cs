@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OOORUL.Model.DataBase;
+using OOORUL.ViewModels.VMPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,14 @@ namespace OOORUL.Views.Pages
         public PageListProduct()
         {
             InitializeComponent();
+        }
+
+        private void sele(object sender, SelectionChangedEventArgs e)
+        {
+            var viewModel = (ViewModelListProduct)DataContext;
+            viewModel.SelectedProducts = lv_products.SelectedItems
+                .Cast<Product>()
+                .ToList();
         }
     }
 }
