@@ -3,10 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:OOORUL.Views.Windows"
+        xmlns:local="clr-namespace:OOORUL.Views.Windows" xmlns:vmwindows="clr-namespace:OOORUL.ViewModels.VMWindows"
         mc:Ignorable="d"
         Title="WindowOrder" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Window.DataContext>
+        <vmwindows:ViewModelWindowOrder/>
+    </Window.DataContext>
+    <Frame Content="{Binding CurrentViewModel}" 
+           NavigationUIVisibility="Hidden"/>
 </Window>

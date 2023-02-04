@@ -161,6 +161,7 @@
         <Grid
             Grid.Row="3">
             <Button
+                Command="{Binding TransitToOrderAction}"
                 Visibility="{Binding BtnVisible, Converter={StaticResource boolToVisibleConverter}}"
                 HorizontalAlignment="Left"
                 Width="200"

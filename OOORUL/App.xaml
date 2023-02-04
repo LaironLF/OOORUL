@@ -14,6 +14,9 @@
         <DataTemplate DataType="{x:Type ViewModelPages:ViewModelListProduct}">
             <ViewPages:PageListProduct/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModelPages:ViewModelPageOrder}">
+            <ViewPages:PageOrder/>
+        </DataTemplate>
 
     </Application.Resources>
 </Application>

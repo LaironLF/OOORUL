@@ -125,7 +125,7 @@ namespace OOORUL.ViewModels.VMPages
             {
                 return _transitToOrderAction ?? (_transitToOrderAction = new RelayCommand(x =>
                 {
-
+                    PageChangeMediator.Transit("OpenWindowOrder");
                 }));
             }
         }

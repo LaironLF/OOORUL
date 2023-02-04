@@ -83,6 +83,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\VMPages\ViewModelPageOrder.cs" />
+    <Compile Include="ViewModels\VMWindows\ViewModelWindowOrder.cs" />
+    <Compile Include="Views\Pages\PageOrder.xaml.cs">
+      <DependentUpon>PageOrder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\WindowOrder.xaml.cs">
       <DependentUpon>WindowOrder.xaml</DependentUpon>
     </Compile>
@@ -95,6 +100,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\PageMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\PageOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
