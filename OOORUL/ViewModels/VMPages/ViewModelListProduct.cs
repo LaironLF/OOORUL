@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OOORUL.Model.Core;
+using OOORUL.Model;
+using System.Windows;
 
 namespace OOORUL.ViewModels.VMPages
 {
@@ -39,8 +41,14 @@ namespace OOORUL.ViewModels.VMPages
         // -----------------------------------------------------
 
         public string UserFullname { get; set; }
-
         public List<Product> SelectedProducts { get; set; }
+
+        private bool _btnVisible = false;
+        public bool BtnVisible
+        {
+            get { return _btnVisible; }
+            set { _btnVisible = value; onPropertyChanged(nameof(BtnVisible)); }
+        }
 
         private int _productCount = 0;
         public int ProductCount
@@ -95,8 +103,46 @@ namespace OOORUL.ViewModels.VMPages
             "15% и более"
         };
 
+        // | Обработка кнопочек
+        // ---------------------------------------------------
+
+        private RelayCommand _addToBuscetAction;
+        public RelayCommand AddToBuscetAction
+        {
+            get
+            {
+                return _addToBuscetAction ?? (_addToBuscetAction = new RelayCommand(x =>
+                {
+                    AddToBuscetProcess();
+                }));
+            }
+        }
+
+        private RelayCommand _transitToOrderAction;
+        public RelayCommand TransitToOrderAction
+        {
+            get
+            {
+                return _transitToOrderAction ?? (_transitToOrderAction = new RelayCommand(x =>
+                {
+
+                }));
+            }
+        }
+
+
         // | Функции
         // ----------------------------------------------------
+
+        private void AddToBuscetProcess()
+        {
+            DataMediator.AddToBuscetList(SelectedProducts);
+            if (SelectedProducts.Count > 1)
+                MessageBox.Show("Товары добавлены в корзину", "Консультант");
+            else
+                MessageBox.Show("Товар добавлен в корзину", "Консультант");
+            BtnVisible = true;
+        }
 
         private void UpdateSortList()
         {
@@ -128,7 +174,8 @@ namespace OOORUL.ViewModels.VMPages
             ProductSubstractedCount = ProductList.Count();
         }
 
-        public List<Product> GetFilteredListByDiscount(List<Product> products, int min, int max) => products.Where(x => x.ProductDiscountAmount >= min && x.ProductDiscountAmount < max).ToList();
+        public List<Product> GetFilteredListByDiscount(List<Product> products, int min, int max) 
+            => products.Where(x => x.ProductDiscountAmount >= min && x.ProductDiscountAmount < max).ToList();
 
     }
 }

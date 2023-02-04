@@ -17,6 +17,7 @@
         <system:String x:Key="defaultImage">
             pack://application:,,,/Resources/picture.png
         </system:String>
+        <BooleanToVisibilityConverter x:Key="boolToVisibleConverter"/>
     </Page.Resources>
 
     <Grid>
@@ -150,7 +151,8 @@
                 <ContextMenu>
                     <MenuItem
                         x:Name="btnAddToBucket"
-                        Header="Добавить к заказу"/>
+                        Header="Добавить к заказу"
+                        Command="{Binding AddToBuscetAction}"/>
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
@@ -159,6 +161,7 @@
         <Grid
             Grid.Row="3">
             <Button
+                Visibility="{Binding BtnVisible, Converter={StaticResource boolToVisibleConverter}}"
                 HorizontalAlignment="Left"
                 Width="200"
                 Height="48"
