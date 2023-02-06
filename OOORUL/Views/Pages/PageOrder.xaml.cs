@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OOORUL.Model.DataBase;
+using OOORUL.ViewModels.VMPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,12 @@ namespace OOORUL.Views.Pages
         public PageOrder()
         {
             InitializeComponent();
+        }
+
+        private void ListBuscetProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var viewModel = (ViewModelPageOrder)DataContext;
+            viewModel.SelectedProduct = ListBuscetProducts.SelectedItem as Product;
         }
     }
 }

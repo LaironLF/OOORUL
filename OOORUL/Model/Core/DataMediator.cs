@@ -24,5 +24,9 @@ namespace OOORUL.Model.Core
                 if(!buscetProducts.Contains(product))
                     buscetProducts.Add(product);
         }
+
+        public static void DeleteProductFromBusket(Product product) => buscetProducts.Remove(product);
+        public static List<Product> GetListBuscetProduct() => buscetProducts;
+
     }
 }

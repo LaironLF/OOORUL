@@ -15,7 +15,10 @@ namespace OOORUL.Model
 
         public static void AddAction(string Key, Action<object> action)
         {
-            DictActions.Add(Key, action);
+            if (!DictActions.ContainsKey(Key))
+                DictActions.Add(Key, action);
+            if(DictActions.ContainsKey(Key))
+                DictActions[Key] = action;
         }
 
 

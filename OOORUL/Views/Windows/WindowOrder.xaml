@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOORUL.Views.Windows" xmlns:vmwindows="clr-namespace:OOORUL.ViewModels.VMWindows"
         mc:Ignorable="d"
-        Title="WindowOrder" Height="450" Width="800">
+        Title="Заказ" Height="650" Width="570"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Icon="pack://application:,,,/Resources/icon.ico">
     <Window.DataContext>
         <vmwindows:ViewModelWindowOrder/>
     </Window.DataContext>

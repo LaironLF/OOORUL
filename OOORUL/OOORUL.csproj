@@ -83,6 +83,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Core\ObservableCollectionConverter.cs" />
     <Compile Include="ViewModels\VMPages\ViewModelPageOrder.cs" />
     <Compile Include="ViewModels\VMWindows\ViewModelWindowOrder.cs" />
     <Compile Include="Views\Pages\PageOrder.xaml.cs">
