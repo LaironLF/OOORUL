@@ -95,6 +95,8 @@
                 Margin="5"
                 Text="Пункст выдачи"/>
             <ComboBox
+                ItemsSource="{Binding PickupPoints}"
+                SelectedIndex="{Binding SelectedIndexPickupPoint, UpdateSourceTrigger=PropertyChanged}"
                 FontSize="16"
                 x:Name="cmbPickapPoint"
                 DisplayMemberPath="Address"
@@ -104,6 +106,7 @@
                 Margin="5"
                 Text="Клиент"/>
             <ComboBox
+                ItemsSource="{Binding AuthorizatedUser}"
                 FontSize="16"
                 x:Name="UserFullname"/>
             <TextBlock
@@ -113,7 +116,7 @@
             <TextBlock
                 Margin="5,0"
                 FontSize="18"
-                Text="{Binding TotalPrice, StringFormat='\{0} рублей'}"/>
+                Text="{Binding TotalPrice, StringFormat='\{0} рублей', UpdateSourceTrigger=PropertyChanged}"/>
             <Button
                 Margin="5"
                 FontSize="16"
@@ -124,7 +127,7 @@
                 Content="Оформить заказ"
                 Width="200"
                 Height="38"
-                Command="{Binding}"/>
+                Command="{Binding OrderAction}"/>
         </StackPanel>
     </Grid>
 </Page>

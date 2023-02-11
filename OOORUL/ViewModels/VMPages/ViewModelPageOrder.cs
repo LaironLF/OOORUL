@@ -1,6 +1,7 @@
 ﻿using OOORUL.Model;
 using OOORUL.Model.Core;
 using OOORUL.Model.DataBase;
+using OOORUL.Model.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,11 +21,13 @@ namespace OOORUL.ViewModels.VMPages
         {
             UpdateListView();
             CalculateTotalPrice();
+            PickupPoints = dataBaseHelper.GetPickupPointList();
         }
 
         // Поля
         // -------------------------
 
+        private DataBaseHelper dataBaseHelper = new DataBaseHelper(); 
         public Product SelectedProduct { get; set; }
 
         private ObservableCollection<Product> _listBuscetProduct;
@@ -41,6 +44,30 @@ namespace OOORUL.ViewModels.VMPages
             set { _totalPrice = value; onPropertyChanged(nameof(TotalPrice)); }
         }
 
+        public string[] AuthorizatedUser
+        {
+            get
+            {
+                var temp = new string[1];
+                if (!DataMediator.IsUserAuthorizated())
+                    temp[0] = "Гость";
+
+                if (DataMediator.IsUserAuthorizated())
+                    temp[0] = $"{DataMediator.GetUserSurname()} {DataMediator.GetUserName()} {DataMediator.GetUserPatronymic()}";
+
+                return temp;
+            }
+        }
+
+        public List<PickupPoint> PickupPoints { get; set; }
+
+        private int _selectedIndexPickupPoint;
+        public int SelectedIndexPickupPoint
+        {
+            get { return _selectedIndexPickupPoint; }
+            set { _selectedIndexPickupPoint = value; onPropertyChanged(nameof(SelectedIndexPickupPoint)); }
+        }
+
         // Обработка кнопок
         // -------------------------
 
@@ -54,6 +81,19 @@ namespace OOORUL.ViewModels.VMPages
                     if(MessageBox.Show("Вы уверены что хотите удалить этот товар?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                         DataMediator.DeleteProductFromBusket(SelectedProduct);
                     UpdateListView();
+                    CalculateTotalPrice();
+                }));
+            }
+        }
+
+        private RelayCommand _orderAction;
+        public RelayCommand OrderAction
+        {
+            get
+            {
+                return _orderAction ?? (_orderAction = new RelayCommand(x =>
+                {
+                    OrderProcess();
                 }));
             }
         }
@@ -61,8 +101,24 @@ namespace OOORUL.ViewModels.VMPages
         // Функции
         // -------------------------
 
+        private void OrderProcess()
+        {
+            try
+            {
+                var order = dataBaseHelper.CreateOrder(SelectedIndexPickupPoint, DataMediator.user, ListBuscetProduct.ToList());
+                DataMediator.SetActualOrder(order);
+                MessageBox.Show("Заказ успешно создан!");
+                PageChangeMediator.Transit("TransitToPageOrderTicket");
+            }
+            catch
+            {
+
+            }
+        }
+
         public void CalculateTotalPrice()
         {
+            TotalPrice = 0;
             foreach (var product in _listBuscetProduct)
                 TotalPrice += product.CostWithDiscount;
         }

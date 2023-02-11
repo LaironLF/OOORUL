@@ -1,0 +1,113 @@
+﻿<Page x:Class="OOORUL.Views.Pages.PageOrderTicket"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OOORUL.Views.Pages" xmlns:vmpages="clr-namespace:OOORUL.ViewModels.VMPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="550"
+      Title="PageOrderTicket">
+    <Page.DataContext>
+        <vmpages:ViewModelPageOrderTicket/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <FlowDocumentReader>
+            <FlowDocument x:Name="FlowDoc">
+                <BlockUIContainer>
+                    <StackPanel HorizontalAlignment="Center">
+                        
+                        <TextBlock Text="Дата заказа: "
+                                   FontFamily="Arial"
+                                   FontWeight="Bold"
+                                   Margin="5"/>
+                        <TextBlock Text="{Binding OrderDate}"
+                                   FontFamily="Arial"
+                                   FontWeight="Medium"
+                                   Margin="5"/>
+
+                        <TextBlock Text="Номер заказа: "
+                                   FontFamily="Arial"
+                                   FontWeight="Bold"
+                                   Margin="5"/>
+                        <TextBlock Text="{Binding OrderNum}"
+                                   FontFamily="Arial"
+                                   FontWeight="Medium"
+                                   Margin="5"/>
+
+                        <TextBlock Text="Состав заказа: "
+                                   FontFamily="Arial"
+                                   FontWeight="Bold"
+                                   Margin="5"/>
+                        <TextBlock Text="{Binding products}"
+                                   FontFamily="Arial"
+                                   FontWeight="Medium"
+                                   Margin="5"/>
+
+                        <TextBlock Text="Сумма заказа: "
+                                   FontFamily="Arial"
+                                   FontWeight="Bold"
+                                   Margin="5"/>
+                        <TextBlock Text="{Binding OrderSumm}"
+                                   FontFamily="Arial"
+                                   FontWeight="Medium"
+                                   Margin="5"/>
+
+                        <TextBlock Text="Сумма скидки: "
+                                   FontFamily="Arial"
+                                   FontWeight="Bold"
+                                   Margin="5"/>
+                        <TextBlock Text="{Binding OrderDiscountingSumm}"
+                                   FontFamily="Arial"
+                                   FontWeight="Medium"
+                                   Margin="5"/>
+
+                        <TextBlock Text="Пункт выдачи: "
+                                   FontFamily="Arial"
+                                   FontWeight="Bold"
+                                   Margin="5"/>
+                        <TextBlock Text="{Binding pickupPoint}"
+                                   FontFamily="Arial"
+                                   FontWeight="Medium"
+                                   Margin="5"/>
+
+                        <TextBlock Text="Дата выдачи: "
+                                   FontFamily="Arial"
+                                   FontWeight="Bold"
+                                   Margin="5"/>
+                        <TextBlock Text="{Binding DelieverDate}"
+                                   FontFamily="Arial"
+                                   FontWeight="Medium"
+                                   Margin="5"/>
+
+                        <TextBlock Text="Код получения: "
+                                   FontFamily="Arial"
+                                   FontWeight="Bold"
+                                   Margin="5"/>
+                        <TextBlock Text="{Binding OrderCode}"
+                                   FontFamily="Arial"
+                                   FontWeight="Medium"
+                                   Margin="5"/>
+
+                    </StackPanel>
+                </BlockUIContainer>
+            </FlowDocument>
+        </FlowDocumentReader>
+        <Button x:Name="btn_savePdf"
+                Grid.Row="1"
+                Content="Сохранить в PDF"
+                Background="Green"
+                Foreground="White"
+                FontFamily="Arial"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Padding="20" Click="btn_savePdf_Click"/>
+
+
+    </Grid>
+</Page>

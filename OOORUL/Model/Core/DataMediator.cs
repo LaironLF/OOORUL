@@ -11,6 +11,7 @@ namespace OOORUL.Model.Core
     {
         public static User user;
         private static List<Product> buscetProducts = new List<Product>();
+        private static Order _order;
 
 
         public static void DeleteData()
@@ -27,6 +28,20 @@ namespace OOORUL.Model.Core
 
         public static void DeleteProductFromBusket(Product product) => buscetProducts.Remove(product);
         public static List<Product> GetListBuscetProduct() => buscetProducts;
+
+        public static bool IsUserAuthorizated() => user != null;
+
+        public static string GetUserName() => user.UserName;
+        public static string GetUserSurname() => user.UserSurname;
+        public static string GetUserPatronymic() => user.UserPatronymic;
+        public static void SetActualOrder(Order order) => _order = order;
+        public static Order GetActualOrder() => _order;
+
+        public static DateTime GetOrderDate() => _order.OrderDate;
+        public static DateTime GetOrdetDeliveryDate() => _order.OrderDeliveryDate;
+        public static int GetOrderCode() => _order.ReceiptCode;
+        public static PickupPoint GetPickupPoint() => _order.PickupPoint;
+        public static int GetOrderId() => _order.OrderID;
 
     }
 }

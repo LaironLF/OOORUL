@@ -23,6 +23,7 @@ namespace OOORUL.ViewModels.VMPages
             else 
                 UserFullname = $"{DataMediator.user.UserSurname} {DataMediator.user.UserName} {DataMediator.user.UserPatronymic}";
 
+            if (DataMediator.user.UserRole == 3) AddBtnVisible = true;
             UpdateSortList();
         }
 
@@ -50,11 +51,30 @@ namespace OOORUL.ViewModels.VMPages
             set { _btnVisible = value; onPropertyChanged(nameof(BtnVisible)); }
         }
 
+        private bool _addBtnVisible = false;
+        public bool AddBtnVisible
+        {
+            get { return _addBtnVisible; }
+            set { _addBtnVisible = value; onPropertyChanged(nameof(AddBtnVisible)); }
+        }
+
         private int _productCount = 0;
         public int ProductCount
         {
             get { return _productCount; }
             set { _productCount = value; onPropertyChanged(nameof(ProductCount)); }
+        }
+
+        private string _searchField;
+        public string SearchField
+        {
+            get { return _searchField; }
+            set
+            {
+                _searchField = value;
+                UpdateSortList();
+                onPropertyChanged(nameof(SearchField));
+            }
         }
 
         private int _productSubstractedCount = 0;
@@ -130,6 +150,18 @@ namespace OOORUL.ViewModels.VMPages
             }
         }
 
+        private RelayCommand _transitToAddProductAction;
+        public RelayCommand TransitToAddProductAction
+        {
+            get
+            {
+                return _transitToAddProductAction ?? (_transitToAddProductAction = new RelayCommand(x =>
+                {
+
+                }));
+            }
+        }
+
 
         // | Функции
         // ----------------------------------------------------
@@ -171,11 +203,14 @@ namespace OOORUL.ViewModels.VMPages
                     ProductList = GetFilteredListByDiscount(ProductList, 15, 101);
                     break;
             }
+            if (SearchField != "" && SearchField != null)
+                ProductList = ProductList.Where(x => x.ProductName.ToLower().Contains(SearchField.ToLower())).ToList();
             ProductSubstractedCount = ProductList.Count();
         }
 
-        public List<Product> GetFilteredListByDiscount(List<Product> products, int min, int max) 
+        private List<Product> GetFilteredListByDiscount(List<Product> products, int min, int max) 
             => products.Where(x => x.ProductDiscountAmount >= min && x.ProductDiscountAmount < max).ToList();
+
 
     }
 }

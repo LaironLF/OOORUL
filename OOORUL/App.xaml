@@ -17,6 +17,9 @@
         <DataTemplate DataType="{x:Type ViewModelPages:ViewModelPageOrder}">
             <ViewPages:PageOrder/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModelPages:ViewModelPageOrderTicket}">
+            <ViewPages:PageOrderTicket/>
+        </DataTemplate>
 
     </Application.Resources>
 </Application>

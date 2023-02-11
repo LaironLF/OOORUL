@@ -43,6 +43,7 @@ namespace OOORUL.ViewModels.VMWindows
             // Добавляем в страницы переходов команды перехода.
 
             PageChangeMediator.AddAction("TransitToPageOrder", x => ChangeViewModel(ViewModels[0]));
+            PageChangeMediator.AddAction("TransitToPageOrderTicket", x => ChangeViewModel(new ViewModelPageOrderTicket()));
 
             // Устанавливаем стартовый экран
 

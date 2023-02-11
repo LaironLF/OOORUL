@@ -16,13 +16,21 @@ using System.Windows.Shapes;
 namespace OOORUL.Views.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для PageMain.xaml
+    /// Логика взаимодействия для PageOrderTicket.xaml
     /// </summary>
-    public partial class PageMain : Page
+    public partial class PageOrderTicket : Page
     {
-        public PageMain()
+        public PageOrderTicket()
         {
             InitializeComponent();
+        }
+
+        private void btn_savePdf_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog pd = new PrintDialog();
+            if (pd.ShowDialog() != true) return;
+            IDocumentPaginatorSource idp = FlowDoc;
+            pd.PrintDocument(idp.DocumentPaginator, Title);
         }
     }
 }
