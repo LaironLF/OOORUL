@@ -17,6 +17,8 @@ namespace OOORUL.Model.Core
         public static void DeleteData()
         {
             user = null;
+            buscetProducts.Clear();
+            _order = null;
         }
 
         public static void AddToBuscetList(List<Product> products)
@@ -42,6 +44,7 @@ namespace OOORUL.Model.Core
         public static int GetOrderCode() => _order.ReceiptCode;
         public static PickupPoint GetPickupPoint() => _order.PickupPoint;
         public static int GetOrderId() => _order.OrderID;
+        public static int GetUserRole() => user!= null ? user.UserRole : 0;
 
     }
 }

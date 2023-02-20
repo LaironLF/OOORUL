@@ -1,4 +1,6 @@
 ﻿using OOORUL.Model;
+using OOORUL.Model.Core;
+using OOORUL.Model.DataBase;
 using OOORUL.ViewModels.VMPages;
 using OOORUL.Views.Windows;
 using System;
@@ -20,7 +22,38 @@ namespace OOORUL.ViewModels
             set
             {
                 _currentViewModel = value;
+                UpdateButton();
                 onPropertyChanged(nameof(CurrentViewModel));
+            }
+        }
+
+        private bool buttonVisible;
+        public bool ButtonVisible
+        {
+            get { return buttonVisible; }
+            set 
+            { 
+                buttonVisible = value; 
+                onPropertyChanged(nameof(ButtonVisible)); 
+            }
+        }
+
+        private string buttonContent;
+        public string ButtonContent
+        {
+            get { return buttonContent; }
+            set { buttonContent = value; onPropertyChanged(nameof(ButtonContent)); }
+        }
+
+        private RelayCommand buttonAction;
+        public RelayCommand ButtonAction
+        {
+            get
+            {
+                return buttonAction ?? (buttonAction = new RelayCommand(x =>
+                {
+                    ButtonProcess();
+                }));
             }
         }
 
@@ -45,6 +78,27 @@ namespace OOORUL.ViewModels
         private void ChangeViewModel(ViewModelBase viewModel) => CurrentViewModel = viewModel;
         private void OpenWindow(Window window) => window.ShowDialog();
 
+        // Функции всякие там
+
+        private void ButtonProcess()
+        {
+            if (CurrentViewModel.GetType() == typeof(ViewModelListProduct))
+            {
+                PageChangeMediator.Transit("TransitToAutho");
+                DataMediator.DeleteData();
+            }
+            if (CurrentViewModel.GetType() == typeof(ViewModelPageAddProduct))
+                PageChangeMediator.Transit("TransitToListProduct");
+        }
+
+        private void UpdateButton()
+        {
+            ButtonVisible = _currentViewModel.GetType() != typeof(ViewModelAuthorization);
+            if (_currentViewModel.GetType() == typeof(ViewModelListProduct))
+                ButtonContent = "Выход";
+            else
+                ButtonContent = "Назад";
+        }
 
         public WindowMainViewModel()
         {
@@ -53,6 +107,11 @@ namespace OOORUL.ViewModels
             PageChangeMediator.AddAction("TransitToAutho", x => ChangeViewModel(new ViewModelAuthorization()));
             PageChangeMediator.AddAction("TransitToListProduct", x => ChangeViewModel(new ViewModelListProduct()));
             PageChangeMediator.AddAction("OpenWindowOrder", x => OpenWindow(new WindowOrder()));
+            PageChangeMediator.AddAction("TransitToPageAddProduct", args =>
+            {
+                if (args.Length == 0) ChangeViewModel(new ViewModelPageAddProduct(null));
+                if (args.Length == 1) ChangeViewModel(new ViewModelPageAddProduct((Product)args[0]));
+            });
 
 
             // --- выставляем стартовый экран

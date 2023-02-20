@@ -63,6 +63,26 @@ namespace OOORUL.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap _14913_970 {
+            get {
+                object obj = ResourceManager.GetObject("_14913_970", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap _892374 {
+            get {
+                object obj = ResourceManager.GetObject("_892374", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap A782R4 {
             get {
                 object obj = ResourceManager.GetObject("A782R4", resourceCulture);

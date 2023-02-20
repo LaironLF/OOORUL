@@ -2,6 +2,7 @@
 using OOORUL.Model.DataBase;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,43 @@ namespace OOORUL.Model.Helpers
         public List<Product> GetOrderedProductsList() => _dataBaseEntities.Product.ToList().OrderBy(x => x.CostWithDiscount).ToList();
         public List<Product> GetOrderedByDescendingList() => _dataBaseEntities.Product.ToList().OrderByDescending(x => x.CostWithDiscount).ToList();
         public List<PickupPoint> GetPickupPointList() => _dataBaseEntities.PickupPoint.ToList();
+        public List<Maker> GetMakersList() => _dataBaseEntities.Maker.ToList();
+        public List<Category> GetCategoryList() => _dataBaseEntities.Category.ToList();
+        public List<Provider> GetProviderList() => _dataBaseEntities.Provider.ToList();
+        
+        public void DeleteProduct(Product product)
+        {
+            _dataBaseEntities.Product.Remove(product);
+            var orderProducts = _dataBaseEntities.OrderProduct.Where(x => x.ProductArticleNumber == product.ProductArticleNumber).ToList();
+            orderProducts.ForEach(x => _dataBaseEntities.OrderProduct.Remove(x));
+            _dataBaseEntities.SaveChanges();
+        }
+        public void AddProduct(Product product)
+        {
+            _dataBaseEntities.Product.Add(product);
+            _dataBaseEntities.SaveChanges();
+        }
+        public void UpdateProduct(Product product)
+        {
+            var baseProduct = _dataBaseEntities.Product.FirstOrDefault(x => x.ProductArticleNumber == product.ProductArticleNumber);
+            baseProduct.ProductName = product.ProductName;
+            baseProduct.ProductManufacturer = product.ProductManufacturer;
+            baseProduct.ProductDescription = product.ProductDescription;
+            baseProduct.ProductCategory = product.ProductCategory;
+            baseProduct.ProductStatus = product.ProductStatus;
+            baseProduct.Unit = product.Unit;
+            baseProduct.ProductCost = product.ProductCost;
+            baseProduct.ProductDiscountAmount = product.ProductDiscountAmount;
+            baseProduct.MaxDiscountAmount = product.MaxDiscountAmount;
+            baseProduct.ProductImage = product.ProductImage;
+            baseProduct.Supplier = product.Supplier;
+            baseProduct.CountInPack = product.CountInPack;
+            baseProduct.MinCount = product.MinCount;
+            baseProduct.ProductQuantityInStock = product.ProductQuantityInStock;
+            
+
+            _dataBaseEntities.SaveChanges();
+        }
 
         public string[] GetPickupPointsListString()
         {

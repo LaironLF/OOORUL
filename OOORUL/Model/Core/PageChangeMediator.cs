@@ -9,11 +9,11 @@ namespace OOORUL.Model
 {
     public static class PageChangeMediator
     {
-        private static IDictionary<string, Action<object>> DictActions
-            = new Dictionary<string, Action<object>>();
+        private static IDictionary<string, Action<object[]>> DictActions
+            = new Dictionary<string, Action<object[]>>();
 
 
-        public static void AddAction(string Key, Action<object> action)
+        public static void AddAction(string Key, Action<object[]> action)
         {
             if (!DictActions.ContainsKey(Key))
                 DictActions.Add(Key, action);
@@ -22,7 +22,7 @@ namespace OOORUL.Model
         }
 
 
-        public static void Transit(string Key, object args = null)
+        public static void Transit(string Key, params object[] args)
         {
             if( DictActions.ContainsKey(Key) )
                 DictActions[Key].Invoke(args);

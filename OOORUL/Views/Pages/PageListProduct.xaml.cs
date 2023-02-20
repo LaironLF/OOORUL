@@ -34,5 +34,19 @@ namespace OOORUL.Views.Pages
                 .Cast<Product>()
                 .ToList();
         }
+
+        private void lv_products_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var viewModel = (ViewModelListProduct)DataContext;
+            if (viewModel.SelectedProducts != null && viewModel.SelectedProducts.Any())
+            {
+                try
+                {
+                    viewModel.TransitToEditProductAction.Execute(null);
+                }
+                catch { }
+               
+            }
+        }
     }
 }

@@ -23,7 +23,7 @@ namespace OOORUL.ViewModels.VMPages
             else 
                 UserFullname = $"{DataMediator.user.UserSurname} {DataMediator.user.UserName} {DataMediator.user.UserPatronymic}";
 
-            if (DataMediator.user.UserRole == 3) AddBtnVisible = true;
+            if (DataMediator.GetUserRole() == 3) AddBtnVisible = true;
             UpdateSortList();
         }
 
@@ -157,8 +157,22 @@ namespace OOORUL.ViewModels.VMPages
             {
                 return _transitToAddProductAction ?? (_transitToAddProductAction = new RelayCommand(x =>
                 {
-
+                    PageChangeMediator.Transit("TransitToPageAddProduct");
                 }));
+            }
+        }
+
+        private RelayCommand _transitToEditProductAction;
+        public RelayCommand TransitToEditProductAction
+        {
+            get
+            {
+                if (AddBtnVisible)
+                    return _transitToEditProductAction ?? (_transitToEditProductAction = new RelayCommand(x =>
+                    {
+                        PageChangeMediator.Transit("TransitToPageAddProduct", SelectedProducts[0]);
+                    }));
+                return null;
             }
         }
 

@@ -5,10 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOORUL" xmlns:viewmodels="clr-namespace:OOORUL.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Icon="icon.ico" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" 
+        Height="450" 
+        Width="800" 
+        Icon="icon.ico" 
+        WindowStartupLocation="CenterScreen"
+        MinWidth="700"
+        MinHeight="350">
     <Window.DataContext>
         <viewmodels:WindowMainViewModel/>
     </Window.DataContext>
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="boolToVisibleConverter"/>
+    </Window.Resources>
 
     <Grid
         Background="White">
@@ -39,8 +49,10 @@
                 Height="45"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-                Margin="16, 0">
-                Выход
+                Margin="16, 0"
+                Command="{Binding ButtonAction}"
+                Content="{Binding ButtonContent}"
+                Visibility="{Binding ButtonVisible, Converter={StaticResource boolToVisibleConverter}}">
             </Button>
 
         </Grid>

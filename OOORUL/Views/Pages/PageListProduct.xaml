@@ -98,7 +98,9 @@
             x:Name="lv_products"
             Grid.Row="2"
             Margin="5"
-            ItemsSource="{Binding ProductList}" SelectionChanged="sele">
+            ItemsSource="{Binding ProductList}" 
+            SelectionChanged="sele" 
+            MouseDoubleClick="lv_products_MouseDoubleClick">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -175,8 +177,8 @@
                     FontSize="20"/>
 
                 <Button
-                    Command="{Binding }"
-                    Visibility="{Binding BtnVisible, Converter={StaticResource boolToVisibleConverter}}"
+                    Command="{Binding TransitToAddProductAction}"
+                    Visibility="{Binding AddBtnVisible, Converter={StaticResource boolToVisibleConverter}}"
                     HorizontalAlignment="Left"
                     Width="200"
                     Height="48"

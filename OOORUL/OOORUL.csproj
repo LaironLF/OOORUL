@@ -65,6 +65,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -84,6 +85,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Core\ObservableCollectionConverter.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\VMPages\ViewModelPageAddProduct.cs" />
     <Compile Include="ViewModels\VMPages\ViewModelPageOrder.cs" />
     <Compile Include="ViewModels\VMPages\ViewModelPageOrderTicket.cs" />
@@ -202,11 +208,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -214,8 +215,8 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EntityDeploy Include="Model\DataBase\DataBaseRulModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -266,6 +267,8 @@
       <DependentUpon>DataBaseRulModel.edmx</DependentUpon>
       <LastGenOutput>DataBaseRulModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\892374.jpg" />
+    <Resource Include="Resources\14913.970.jpg" />
     <Resource Include="Resources\picture.png" />
     <Resource Include="Resources\Z472R4.jpeg" />
     <Resource Include="Resources\Z469T7.jpg" />

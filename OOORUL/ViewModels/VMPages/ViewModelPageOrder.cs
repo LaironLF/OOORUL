@@ -105,14 +105,15 @@ namespace OOORUL.ViewModels.VMPages
         {
             try
             {
+                if (ListBuscetProduct.Count == 0) throw new Exception("Корзина товаров пуста!");
                 var order = dataBaseHelper.CreateOrder(SelectedIndexPickupPoint, DataMediator.user, ListBuscetProduct.ToList());
                 DataMediator.SetActualOrder(order);
                 MessageBox.Show("Заказ успешно создан!");
                 PageChangeMediator.Transit("TransitToPageOrderTicket");
             }
-            catch
+            catch(Exception e)
             {
-
+                MessageBox.Show(e.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
